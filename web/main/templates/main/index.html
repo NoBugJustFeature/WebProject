@@ -1,0 +1,27 @@
+{% extends "main/base.html" %}
+
+{% block title %}
+Главная страница
+{% endblock %}
+
+{% block content %}
+<style>
+    .block{
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 100px;
+        border: 10px;
+        border-color: blue;
+    }
+    .text-header{
+        font-family: "Calibri";
+        font-size: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+<div class="block">
+    <b class="text-header">Новинки</b>
+</div>
+{% endblock %}
