@@ -9,9 +9,7 @@
     .block{
         margin-left: 10%;
         margin-right: 10%;
-        margin-top: 100px;
-        border: 10px;
-        border-color: blue;
+        margin-top: 50px;
     }
     .text-header{
         font-family: "Calibri";
@@ -20,8 +18,52 @@
         align-items: center;
         justify-content: center;
     }
+    .text-title{
+        font-family: "Calibri";
+        font-size: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;       
+    }
+    .href-title{
+        margin-bottom: 20px;
+        font-family: "Calibri";
+        font-size: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;  
+        text-decoration: none;
+        color: black;
+        }
+    .href-title:hover{
+        color: rgb(14, 215, 14);
+        text-decoration: underline;
+    }
+    .content{
+        margin-left: 15%;
+        margin-right: 15%;
+        margin-top: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;       
+    }
+    .content-text{
+        font-family: "Calibri";
+        font-size: 20px;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
 </style>
 <div class="block">
-    <b class="text-header">Новинки</b>
+    <b class="text-header">В прокате</b>
 </div>
+{% for movie in movies %}
+<div class="content">
+    <a href="{% url 'about-film' %}?movie={{movie.href}}"><img src="media\{{movie.poster}}" alt="{{movie.title}}"></a>
+    <div class="content-text">
+    <a href="{% url 'about-film' %}?movie={{movie.href}}" class="href-title">{{ movie.title }}</a>
+    {{ movie.description }}
+    </div>
+</div>
+{% endfor %}
 {% endblock %}

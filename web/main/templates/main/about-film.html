@@ -1,0 +1,41 @@
+{% extends "main/base.html" %}
+
+{% block title %}
+Film Title
+{% endblock %}
+
+{% block content %}
+<style>
+    .block{
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 100px;
+    }
+    .text-header{
+        font-family: "Calibri";
+        font-size: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .text-title{
+        font-family: "Calibri";
+        font-size: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;       
+    }
+    .href-style{
+        text-decoration: none;
+        color: black;
+        }
+    .href-style:hover{
+        color: rgb(14, 215, 14);
+        text-decoration: underline;
+    }
+</style>
+<div class="block">
+    <b>{{movie}}</b>
+
+</div>
+{% endblock %}
