@@ -1,41 +1,98 @@
 {% extends "main/base.html" %}
 
 {% block title %}
-Film Title
+{{ movie.title }}
 {% endblock %}
 
 {% block content %}
 <style>
+    *{
+        font-family: "Calibri";
+    }
     .block{
         margin-left: 10%;
         margin-right: 10%;
-        margin-top: 100px;
+        margin-top: 50px;
     }
     .text-header{
-        font-family: "Calibri";
         font-size: 60px;
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    .text-title{
-        font-family: "Calibri";
+    .film-title{
+        margin-bottom: 20px;
         font-size: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;  
+        text-decoration: none;
+        color: black;
+        }
+    .content{
+        margin-left: 15%;
+        margin-right: 15%;
+        margin-top: 50px;
         display: flex;
         align-items: center;
         justify-content: center;       
     }
-    .href-style{
-        text-decoration: none;
-        color: black;
-        }
-    .href-style:hover{
-        color: rgb(14, 215, 14);
-        text-decoration: underline;
+    .content-text{
+        font-size: 20px;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    .comment{
+        font-size: 20px;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 10px;
+        margin-bottom: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;  
+    }
+    .username{
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;  
+    }
+    .trailer{
+        display: flex;
+        align-items: center;
+        justify-content: center; 
     }
 </style>
 <div class="block">
-    <b>{{movie}}</b>
+    <p class="text-header">О фильме</p>
+</div>
 
+<div class="content">
+    <img src="media\{{movie.poster}}" alt="{{movie.title}}" width="300" height="450">
+    <div class="content-text">
+    <b class="film-title">{{ movie.title }}</b>
+    {{ movie.description }}
+    </div>
+</div>
+
+<div class="block" width="100%">
+    <p class="text-header">Трейлер</p>
+    <div class="trailer">
+        <iframe width="50%" height="315" src="https://www.youtube.com/embed/{{ movie.trailer_href }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    </div>
+</div>
+
+<div class="block">
+    <p class="text-header">Комментарии</p>
+</div>
+
+<div class="block">
+    {% for comment in comments %}
+    <b class="username">USER</b>
+    <div class="comment">
+        {{ comment.comment }}
+    </div>
+    {% endfor %}
 </div>
 {% endblock %}
