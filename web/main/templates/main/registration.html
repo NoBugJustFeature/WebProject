@@ -1,0 +1,28 @@
+{% extends "main/base.html" %}
+
+{% block title %}
+Регистрация
+{% endblock %}
+
+
+{% block content %}
+<style>
+    .block{
+        margin-left: 20%;
+        margin-right: 20%;
+        margin-top: 50px;
+        font-family: "Calibri";
+        font-size: 20px;
+        align-items: center;
+        justify-content: center;
+}
+</style>
+<div class="block">
+    Регистрация
+    <form method="post">
+        {{ user_form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Create my account"></p>
+    </form>
+</div>
+{% endblock %}

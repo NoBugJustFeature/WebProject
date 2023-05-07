@@ -15,7 +15,8 @@ class Movies(models.Model):
 class Comments(models.Model):
     film_title = models.CharField("Название фильма", max_length=50)
     comment = models.TextField("Комментарий")
-    userid = models.CharField("ID пользователя", max_length=50)
+    username = models.CharField("Логин пользователя", max_length=50)
+    film_href = models.CharField("Ссылка", max_length=50)
 
     def __str__(self):
         return self.film_title

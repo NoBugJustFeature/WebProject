@@ -6,5 +6,82 @@
 
 
 {% block content %}
-Аккаунт
+<style>
+    .block{
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top: 50px;
+    }
+    .text-header{
+        font-family: "Calibri";
+        font-size: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .content-text{
+        font-family: "Calibri";
+        font-size: 20px;
+        margin-left: 10%;
+        margin-right: 10%;
+
+    }
+    .text-header-small{
+        font-family: "Calibri";
+        font-size: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;  
+    }
+    .href-title{
+        margin-bottom: 20px;
+        font-family: "Calibri";
+        font-size: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;  
+        text-decoration: none;
+        color: black;
+        }
+    .href-title:hover{
+        color: rgb(14, 215, 14);
+        text-decoration: underline;
+    }
+    .comment{
+        font-family: "Calibri";
+        font-size: 20px;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-bottom: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;  
+    }
+</style>
+<div class="block">
+    <b class="text-header">Аккаунт</b>
+</div>
+<div class="block">
+    <p class="content-text"><b>Логин: </b>{{user.username}}</p>
+    <p class="content-text"><b>Email: </b>{{user.email}}</p>
+    <p class="content-text"><b>Аккаунт создан: </b>{{user.date_joined}}</p>
+    <p class="content-text"><b>Последний вход: </b>{{user.last_login}}</p>
+</div>
+{%if comments%}
+<div class="block">
+    <b class="text-header-small">Ваши отзывы</b>
+</div>
+<div class="block">
+    {% for comment in comments %}
+    <a href="{% url 'about-film' %}?movie={{comment.film_href}}" class="href-title">{{ comment.film_title }}</a>
+    <div class="comment">
+        {{ comment.comment }}
+    </div>
+    {% endfor %}
+</div>
+{%else%}
+<div class="block">
+    <b class="text-header-small">Вы пока не оставляли отзывов</b>
+</div>
+{%endif%}
 {% endblock %}

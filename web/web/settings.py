@@ -36,6 +36,12 @@ ALLOWED_HOSTS = []
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
+#Email
+EMAIL_USE_TLS = True 
+EMAIL_HOST = 'smtp.mail.ru' 
+EMAIL_HOST_USER = 'maks_vinokurov_2005@mail.ru' 
+EMAIL_HOST_PASSWORD = '09cZtEJezSmySY5ncQzv' 
+EMAIL_PORT = 465 
 
 # Application definition
 
