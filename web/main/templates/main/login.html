@@ -10,6 +10,8 @@
     .form{
         margin-left: 10%;
         margin-right: 10%;
+        margin-top: 20px;
+        margin-bottom: 30px;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -29,7 +31,7 @@
         justify-content: center;
         font-family: "Calibri";
         font-size: 25px;
-        margin-left: 10px;
+        margin-bottom: 10px;
     }
     .form-block{
         display: flex;
@@ -82,21 +84,18 @@
 <b class="enter">Вход в аккаунт</b>
 <div class="form">
     <form method="post">
+        {% csrf_token %}
         {%for label in form%}
-            <div class="form-block"></div>
                 <div class="form-style">{{label.label}}</div>
                 <div class="form-style">{{label}}</div>
-            </div>
         {%endfor%}
-        {% csrf_token %}
+    </div>
         {%if message%}
         <p class="error">{{message}}</p>
         {% else %}
-        <p></p>
         {%endif%}
 
         <div class="block-mini"><input type="submit" value="Войти в аккаунт" class="floating-button"></div>
     </form>
         <div class="block-mini"><a href="{% url 'registration' %}" class="floating-button">Зарегистрироваться</a></div>
-</div>
 {% endblock %}

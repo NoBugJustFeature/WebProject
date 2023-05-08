@@ -58,11 +58,56 @@
         align-items: center;
         justify-content: center;  
     }
-    .trailer{
+    .mid-pos{
         display: flex;
         align-items: center;
         justify-content: center; 
     }
+    .floating-button {
+        text-decoration: none;
+        display: inline-block;
+        border: 10px;
+        border-color: black;
+        width: 200px;
+        height: 45px;
+        line-height: 45px;
+        border-radius: 45px;
+        margin: 10px 20px;
+        font-family: "Calibri";
+        font-size: 20px;
+        text-align: center;
+        font-weight: 600;
+        color: #524f4e;
+        background: white;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+        transition: .3s;
+    }
+    .floating-button:hover {
+        background: #2EE59D;
+        box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
+        color: white;
+        transform: translateY(-7px);
+    }
+    .sumbit-btn{
+        text-align: right;
+    }
+    .textarea-style{
+    color: initial;
+    display: inline-block;
+    background-color: rgb(226, 226, 226);
+    resize: auto;
+    cursor: text;
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+    font-family: "Calibri";
+    font-size: 20px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(9, 37, 0);
+    padding: 2px;
+    width: 550px;
+    height: 150;
+}
 </style>
 <div class="block">
     <p class="text-header">О фильме</p>
@@ -78,13 +123,23 @@
 
 <div class="block" width="100%">
     <p class="text-header">Трейлер</p>
-    <div class="trailer">
+    <div class="mid-pos">
         <iframe width="50%" height="315" src="https://www.youtube.com/embed/{{ movie.trailer_href }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     </div>
 </div>
 
 <div class="block">
     <p class="text-header">Комментарии</p>
+</div>
+<div class="mid-pos">
+
+    <form method="POST">
+        {% csrf_token %}
+        {{leave_comment.comment}}
+        <div class="sumbit-btn"><input type="submit" value="Отправить" class="floating-button"></div>
+
+    </form>
+    
 </div>
 
 <div class="block">
