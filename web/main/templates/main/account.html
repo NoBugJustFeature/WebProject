@@ -57,6 +57,31 @@
         align-items: center;
         justify-content: center;  
     }
+    .floating-button {
+        text-decoration: none;
+        display: inline-block;
+        border: 10px;
+        border-color: black;
+        width: 200px;
+        height: 45px;
+        line-height: 45px;
+        border-radius: 45px;
+        margin: 10px 20px;
+        font-family: "Calibri";
+        font-size: 20px;
+        text-align: center;
+        font-weight: 600;
+        color: #524f4e;
+        background: white;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
+        transition: .3s;
+    }
+    .floating-button:hover {
+        background: #e5432e;
+        box-shadow: 0 15px 20px rgba(229, 98, 46, 0.4);
+        color: white;
+        transform: translateY(-7px);
+    }
 </style>
 <div class="block">
     <b class="text-header">Аккаунт</b>
@@ -66,6 +91,12 @@
     <p class="content-text"><b>Email: </b>{{user.email}}</p>
     <p class="content-text"><b>Аккаунт создан: </b>{{user.date_joined}}</p>
     <p class="content-text"><b>Последний вход: </b>{{user.last_login}}</p>
+    <form method="post">
+        {% csrf_token %}
+        <p class="content-text">
+            <input type="submit" value="Выйти из аккаунта" class="floating-button">
+        </p>
+    </form>
 </div>
 {%if comments%}
 <div class="block">

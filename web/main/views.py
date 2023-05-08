@@ -4,7 +4,7 @@ from django.contrib import messages
 from .models import Movies, Comments
 from django.contrib.auth.models import User
 
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from .forms import RegistrationForm, LoginForm
 
 
@@ -32,6 +32,10 @@ def log_in(request):
     return render(request, 'main/login.html', {'form': form, "message": message})
 
 def account(request):
+    if request.method == 'POST':
+        logout(request)
+        return redirect(account)
+
     if request.user.is_authenticated:
         user = User.objects.get(username=request.user.username)
         comments = Comments.objects.filter(username=request.user.username)

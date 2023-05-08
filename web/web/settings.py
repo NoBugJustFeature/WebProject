@@ -40,7 +40,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 EMAIL_USE_TLS = True 
 EMAIL_HOST = 'smtp.mail.ru' 
 EMAIL_HOST_USER = 'maks_vinokurov_2005@mail.ru' 
-EMAIL_HOST_PASSWORD = '09cZtEJezSmySY5ncQzv' 
+EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 EMAIL_PORT = 465 
 
 # Application definition
