@@ -7,10 +7,14 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from .forms import RegistrationForm, LoginForm, CommentForm
 
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+
 
 def index(request):
     movies = Movies.objects.all()
     return render(request, "main/index.html", {"movies": movies})
+
 
 def registration(request):
     if request.user.is_authenticated:
@@ -48,6 +52,7 @@ def log_in(request):
         message = "Неправильный логин или пароль"
     return render(request, 'main/login.html', {'form': login_form, "message": message})
 
+
 def account(request):
     if request.method == 'POST':
         logout(request)
@@ -60,20 +65,24 @@ def account(request):
     else: 
         return redirect(log_in)
 
+
 def about(request):
     return render(request, "main/about.html")
 
+
 def about_film(request):
+    print(request.method)
     if request.method == 'POST':
         comment = CommentForm(request.POST)
         if comment.is_valid():
             comm = comment.save(commit=False)
             comm.film_title = Movies.objects.get(href=request.GET.get("movie")).title
-            comm.username = request.user.username
+            username = request.user.username
+            comm.username = username if username else "Guest"
             comm.film_href = request.GET.get("movie")
             comm.save()
-            
-
+            return HttpResponseRedirect(f'about-film?movie={request.GET.get("movie")}')
+        
     movie = Movies.objects.get(href=request.GET.get("movie"))
     comments = Comments.objects.filter(film_title=movie.title)
     leave_comment = CommentForm() 
