@@ -71,7 +71,6 @@ def about(request):
 
 
 def about_film(request):
-    print(request.method)
     if request.method == 'POST':
         comment = CommentForm(request.POST)
         if comment.is_valid():
