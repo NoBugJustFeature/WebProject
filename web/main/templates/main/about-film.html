@@ -144,7 +144,7 @@
 
 <div class="block">
     {% for comment in comments %}
-    <b class="username">{{comment.username}}</b>
+    <b class="username">{{comment.user.username}}</b>
     <div class="comment">
         {{ comment.comment }}
     </div>

@@ -1,5 +1,5 @@
 from django import forms
-from .models import Comments
+from .models import Comment
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
@@ -14,7 +14,7 @@ class RegistrationForm(UserCreationForm):
 
 class CommentForm(forms.ModelForm):
     class Meta:
-        model= Comments
+        model= Comment
         fields = ["comment"]
         widgets = {"comment": forms.Textarea(attrs={
             "placeholder": "Оставьте свой отзыв",

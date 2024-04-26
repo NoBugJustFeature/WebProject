@@ -1,6 +1,6 @@
 from django.contrib import admin
-from .models import Movies
-from .models import Comments
+from .models import Movie
+from .models import Comment
 
-admin.site.register([Movies,
-                     Comments,])
+admin.site.register([Movie,
+                     Comment,])

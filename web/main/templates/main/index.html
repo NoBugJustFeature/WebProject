@@ -59,9 +59,9 @@
 </div>
 {% for movie in movies %}
 <div class="content">
-    <a href="{% url 'about-film' %}?movie={{movie.href}}"><img src="media\{{movie.poster}}" alt="{{movie.title}}" width="300" height="450"></a>
+    <a href="{% url 'about-film' %}?movie={{movie.address_href}}"><img src="media\{{movie.poster}}" alt="{{movie.title}}" width="300" height="450"></a>
     <div class="content-text">
-    <a href="{% url 'about-film' %}?movie={{movie.href}}" class="href-title">{{ movie.title }}</a>
+    <a href="{% url 'about-film' %}?movie={{movie.address_href}}" class="href-title">{{ movie.title }}</a>
     {{ movie.description }}
     </div>
 </div>

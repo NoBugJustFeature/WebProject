@@ -104,7 +104,7 @@
 </div>
 <div class="block">
     {% for comment in comments %}
-    <a href="{% url 'about-film' %}?movie={{comment.film_href}}" class="href-title">{{ comment.film_title }}</a>
+    <a href="{% url 'about-film' %}?movie={{comment.movie.address_href}}" class="href-title">{{ comment.movie.title }}</a>
     <div class="comment">
         {{ comment.comment }}
     </div>

@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 
-from .models import Movies, Comments
+from .models import Movie, Comment
 from django.contrib.auth.models import User
 
 from django.contrib.auth import authenticate, login, logout
@@ -12,7 +12,7 @@ from django.urls import reverse
 
 
 def index(request):
-    movies = Movies.objects.all()
+    movies = Movie.objects.all()
     return render(request, "main/index.html", {"movies": movies})
 
 
@@ -60,7 +60,7 @@ def account(request):
 
     if request.user.is_authenticated:
         user = User.objects.get(username=request.user.username)
-        comments = Comments.objects.filter(username=request.user.username)
+        comments = Comment.objects.filter(user=user)
         return render(request, "main/account.html", {"user":user, "comments": comments})
     else: 
         return redirect(log_in)
@@ -75,16 +75,16 @@ def about_film(request):
         comment = CommentForm(request.POST)
         if comment.is_valid():
             comm = comment.save(commit=False)
-            comm.film_title = Movies.objects.get(href=request.GET.get("movie")).title
-            username = request.user.username
-            comm.username = username if username else "Guest"
-            comm.film_href = request.GET.get("movie")
+            print(request.user)
+            user = request.user
+            comm.user = user if user else "Guest"
+            comm.movie = Movie.objects.get(address_href=request.GET.get("movie"))
             comm.save()
             return HttpResponseRedirect(f'about-film?movie={request.GET.get("movie")}')
-        
-    movie = Movies.objects.get(href=request.GET.get("movie"))
-    comments = Comments.objects.filter(film_title=movie.title)
-    leave_comment = CommentForm() 
+    
+    movie = Movie.objects.get(address_href=request.GET.get("movie"))
+    comments = Comment.objects.filter(movie=movie)
+    leave_comment = CommentForm()
     return render(request, "main/about-film.html", {"movie": movie,
                                                     "comments": comments,
                                                     "leave_comment": leave_comment})
