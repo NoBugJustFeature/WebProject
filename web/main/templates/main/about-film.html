@@ -1,97 +1,92 @@
-{% extends "main/base.html" %}
-
-{% block title %}
-{{ movie.title }}
-{% endblock %}
-
+{% extends "main/base.html" %} {% block title %} {{ movie.title }} {% endblock%}
 {% block content %}
 <style>
-    *{
-        font-family: "Calibri";
-    }
-    .block{
-        margin-left: 10%;
-        margin-right: 10%;
-        margin-top: 50px;
-    }
-    .text-header{
-        font-size: 60px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .film-title{
-        margin-bottom: 20px;
-        font-size: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;  
-        text-decoration: none;
-        color: black;
-        }
-    .content{
-        margin-left: 15%;
-        margin-right: 15%;
-        margin-top: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;       
-    }
-    .content-text{
-        font-size: 20px;
-        margin-left: 10%;
-        margin-right: 10%;
-    }
-    .comment{
-        font-size: 20px;
-        margin-left: 10%;
-        margin-right: 10%;
-        margin-top: 10px;
-        margin-bottom: 25px;
-        display: flex;
-        align-items: center;
-        justify-content: center;  
-    }
-    .username{
-        font-size: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;  
-    }
-    .mid-pos{
-        display: flex;
-        align-items: center;
-        justify-content: center; 
-    }
-    .floating-button {
-        text-decoration: none;
-        display: inline-block;
-        border: 10px;
-        border-color: black;
-        width: 200px;
-        height: 45px;
-        line-height: 45px;
-        border-radius: 45px;
-        margin: 10px 20px;
-        font-family: "Calibri";
-        font-size: 20px;
-        text-align: center;
-        font-weight: 600;
-        color: #524f4e;
-        background: white;
-        box-shadow: 0 8px 15px rgba(0, 0, 0, .1);
-        transition: .3s;
-    }
-    .floating-button:hover {
-        background: #2EE59D;
-        box-shadow: 0 15px 20px rgba(46, 229, 157, .4);
-        color: white;
-        transform: translateY(-7px);
-    }
-    .sumbit-btn{
-        text-align: right;
-    }
-    .textarea-style{
+  * {
+    font-family: "Calibri";
+  }
+  .block {
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 50px;
+  }
+  .text-header {
+    font-size: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .film-title {
+    margin-bottom: 20px;
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+  }
+  .content {
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .content-text {
+    font-size: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
+  .comment {
+    font-size: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .username {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .mid-pos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .floating-button {
+    text-decoration: none;
+    display: inline-block;
+    border: 10px;
+    border-color: black;
+    width: 200px;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 45px;
+    margin: 10px 20px;
+    font-family: "Calibri";
+    font-size: 20px;
+    text-align: center;
+    font-weight: 600;
+    color: #524f4e;
+    background: white;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+  }
+  .floating-button:hover {
+    background: #2ee59d;
+    box-shadow: 0 15px 20px rgba(46, 229, 157, 0.4);
+    color: white;
+    transform: translateY(-7px);
+  }
+  .sumbit-btn {
+    text-align: right;
+  }
+  .textarea-style {
     color: initial;
     display: inline-block;
     background-color: rgb(226, 226, 226);
@@ -107,47 +102,59 @@
     padding: 2px;
     width: 550px;
     height: 150;
-}
+  }
 </style>
 <div class="block">
-    <p class="text-header">О фильме</p>
+  <p class="text-header">О фильме</p>
 </div>
 
 <div class="content">
-    <img src="media\{{movie.poster}}" alt="{{movie.title}}" width="300" height="450">
-    <div class="content-text">
+  <img
+    src="media\{{movie.poster}}"
+    alt="{{movie.title}}"
+    width="300"
+    height="450"
+  />
+  <div class="content-text">
     <b class="film-title">{{ movie.title }}</b>
     {{ movie.description }}
-    </div>
+  </div>
 </div>
 
 <div class="block" width="100%">
-    <p class="text-header">Трейлер</p>
-    <div class="mid-pos">
-        <iframe width="50%" height="315" src="https://www.youtube.com/embed/{{ movie.trailer_href }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
+  <p class="text-header">Трейлер</p>
+  <div class="mid-pos">
+    <iframe
+      width="50%"
+      height="315"
+      src="https://www.youtube.com/embed/{{ movie.trailer_href }}"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen
+    ></iframe>
+  </div>
 </div>
 
 <div class="block">
-    <p class="text-header">Комментарии</p>
+  <p class="text-header">Комментарии</p>
 </div>
 <div class="mid-pos">
-
-    <form method="POST">
-        {% csrf_token %}
-        {{leave_comment.comment}}
-        <div class="sumbit-btn"><input type="submit" value="Отправить" class="floating-button"></div>
-
-    </form>
-    
+  <form method="POST">
+    {% csrf_token %} {{leave_comment.comment}}
+    <div class="sumbit-btn">
+      <input type="submit" value="Отправить" class="floating-button" />
+    </div>
+  </form>
 </div>
 
 <div class="block">
-    {% for comment in comments %}
-    <b class="username">{{comment.user.username}}</b>
-    <div class="comment">
-        {{ comment.comment }}
-    </div>
-    {% endfor %}
+  {% for comment in comments %} {% if comment.user.username %}
+  <b class="username">{{comment.user.username}}</b>
+  {% else %}
+  <b class="username">Guest</b>
+  {% endif %}
+  <div class="comment">{{ comment.comment }}</div>
+  {% endfor %}
 </div>
 {% endblock %}

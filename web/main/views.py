@@ -75,9 +75,9 @@ def about_film(request):
         comment = CommentForm(request.POST)
         if comment.is_valid():
             comm = comment.save(commit=False)
-            print(request.user)
             user = request.user
-            comm.user = user if user else "Guest"
+            if user.is_authenticated:
+                comm.user = user
             comm.movie = Movie.objects.get(address_href=request.GET.get("movie"))
             comm.save()
             return HttpResponseRedirect(f'about-film?movie={request.GET.get("movie")}')
